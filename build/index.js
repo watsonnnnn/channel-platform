@@ -130,6 +130,17 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 
 /***/ }),
 
+/***/ "./webpackfiles/images/header.png":
+/*!****************************************!*\
+  !*** ./webpackfiles/images/header.png ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"825669111509ece6fa5e5016db50f684.png\";\n\n//# sourceURL=webpack:///./webpackfiles/images/header.png?");
+
+/***/ }),
+
 /***/ "./webpackfiles/index.css":
 /*!********************************!*\
   !*** ./webpackfiles/index.css ***!
@@ -148,7 +159,7 @@ eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!./inde
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var requirePack1 = __webpack_require__(/*! ./index.webpack1 */ \"./webpackfiles/index.webpack1.js\");\r\n// var _ = require('lodash');\r\n__webpack_require__(/*! ./index.css */ \"./webpackfiles/index.css\");\r\n\r\nfunction component() {\r\n  console.log(requirePack1);\r\n\r\n  var element = document.createElement('div');\r\n\r\n  // element.innerHTML = _.join(['Hello', 'webpack'], '~');\r\n  element.innerHTML = 'hello world';\r\n\r\n  element.classList.add('red');\r\n\r\n  return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\r\n\r\nmodule.exports = ['index.webpack']\n\n//# sourceURL=webpack:///./webpackfiles/index.webpack.js?");
+eval("var requirePack1 = __webpack_require__(/*! ./index.webpack1 */ \"./webpackfiles/index.webpack1.js\");\r\n// var _ = require('lodash');\r\n__webpack_require__(/*! ./index.css */ \"./webpackfiles/index.css\");\r\nvar imgI = __webpack_require__(/*! ./images/header.png */ \"./webpackfiles/images/header.png\");\r\n\r\nfunction component() {\r\n  console.log(requirePack1);\r\n  console.log(imgI);\r\n  var element = document.createElement('div');\r\n\r\n  // element.innerHTML = _.join(['Hello', 'webpack'], '~');\r\n  element.innerHTML = 'hello world';\r\n\r\n  element.classList.add('red');\r\n\r\n  return element;\r\n}\r\n\r\nfunction imgc(){\r\n  var img = document.createElement('img');\r\n  img.src = imgI;\r\n  return img\r\n}\r\n\r\n\r\ndocument.body.appendChild(component());\r\ndocument.body.appendChild(imgc());\r\n\r\nmodule.exports = ['index.webpack']\n\n//# sourceURL=webpack:///./webpackfiles/index.webpack.js?");
 
 /***/ }),
 
