@@ -10,8 +10,8 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, './build'),
-    filename: '[name].js', //hash后缀
-    chunkFilename: '[name].chunk.js'
+    filename: '[name].[hash].js', //hash后缀
+    chunkFilename: '[name].[hash].chunks.js'
   },
 
   plugins: [
