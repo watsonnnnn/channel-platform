@@ -4,7 +4,7 @@ const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
+console.log(process.env.webpack_SERVE)
 module.exports = merge(common, {
 
   devtool: 'inline-source-map',
