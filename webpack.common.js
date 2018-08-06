@@ -17,7 +17,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, 'build')]),
     new HtmlWebpackPlugin({
-      title: 'htmlplugin'
+      title: 'htmlplugin',
+      // chunks: ['app']
     }),
   ],
 

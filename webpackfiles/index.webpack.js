@@ -1,4 +1,4 @@
-var _ = require('lodash');
+// var _ = require('lodash');
 require('./indexcss.css');
 var imgI = require('./images/header.png');
 var xmlData = require('./xml/data.xml');
@@ -16,7 +16,7 @@ function component() {
   console.log(process.env.NODE_ENV);
   var element = document.createElement('div');
 
-  element.innerHTML = _.join(['Hello', 'webpack', '你好中国1231299999'], '~');
+  // element.innerHTML = _.join(['Hello', 'webpack', '你好中国1231299999'], '~');
   // element.innerHTML = 'hello world 你好中国123123';
 
   element.classList.add('red');
