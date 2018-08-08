@@ -15,7 +15,6 @@ module.exports = {
     // 每一项，一般就是initial chunk，而通过lazy load加载的一般就是normal chunk，也就是require.ensure、
     // import()等一些引入的chunk
   },
-
   // devtool: 'inline-source-map',
 
   output: {

@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
     // index1: path.join(__dirname, 'webpackfiles/index.webpack2.js')
+    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
   },
 
   output: {

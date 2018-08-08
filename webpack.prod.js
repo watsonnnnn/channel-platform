@@ -8,11 +8,11 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = merge(common, {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   entry: {
     // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
-    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
+    // index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
   },
 
   optimization: {
@@ -24,7 +24,7 @@ module.exports = merge(common, {
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
-    runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
+    // runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
     // runtimeChunk: {
     //   name: 'runtime1'
     // },
@@ -60,5 +60,5 @@ module.exports = merge(common, {
     ]
   },
 
-  mode: 'production' // 相关配置 比如uglifyjs
+  mode: 'production' // 相关配置 比如uglifyjs 命令行选项优于此配置 可以用-p 或者 --mode=production
 })
