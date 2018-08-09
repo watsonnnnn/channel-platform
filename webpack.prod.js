@@ -8,7 +8,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   entry: {
     // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
