@@ -42,7 +42,7 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    new WebpackManifestPlugin(),
+    new WebpackManifestPlugin(),// 资源映射文件 名字使用entry
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
