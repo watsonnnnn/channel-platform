@@ -1,12 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const common = require('./webpack.common');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-console.log(process.env.webpack_SERVE,process.argv)
+const argv = require('yargs').argv;
+
+console.log(argv.env.development) 
+
 module.exports = merge(common, {
 
   devtool: 'source-map',
@@ -19,7 +21,7 @@ module.exports = merge(common, {
     hot: true
   },
 
-  // optimization: {
+  optimization: {
   //   minimizer: [
   //     new UglifyJsPlugin({
   //       cache: true,
@@ -28,19 +30,19 @@ module.exports = merge(common, {
   //     }),
   //     new OptimizeCSSAssetsPlugin({})
   //   ],
-  //   // runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     cacheGroups: {
-  //       vendor: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'verdors',
-  //         chunks: 'all' // 和上面的chunks配置看起来没有区别
-  //       }
-  //     },
-  //     automaticNameDelimiter : '-'
-  //   }
-  // },
+    runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'verdors',
+          chunks: 'all' // 和上面的chunks配置看起来没有区别
+        }
+      },
+      automaticNameDelimiter : '-'
+    }
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -54,7 +56,15 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader' ]
+        // use: ['style-loader', MiniCssExtractPlugin.loader, { // style loader 负责将样式用style标签放到head中 
+          //extractplugin负责提取css 二者共存的话，cssloader的modules tru会报错
+        use: [argv.env.development?'style-loader': MiniCssExtractPlugin.loader, {
+          loader: 'css-loader',
+          options:{
+            // url: false, //设置不解析css中的url()
+            modules: true
+          }
+        } ]
       }
     ]
   },
@@ -63,7 +73,7 @@ module.exports = merge(common, {
 })
 
 // module.exports = (env,argv) => {
-//   console.log(env, env===process.env, process.env.NODE_ENV,argv)
+//   console.log(env, env===process.env, process.env.NODE_ENV,argv) // 在package.json中 script启动时指定
 //   return {
 //     entry: {
 //       // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),

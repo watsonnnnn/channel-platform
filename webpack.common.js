@@ -27,7 +27,12 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: ['file-loader']
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000
+          }
+        }]
       },
       {
         test: /\.(ttf|woff|woff2|otf)$/,

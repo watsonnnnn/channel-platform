@@ -19,3 +19,11 @@ body{
   font-family: 'Market Saturday1';
   color: blue;
 }
+
+.bgd{
+  height: 300px;
+  width: 600px;
+  /* background: red; */
+  background: url(./images/header.png); 
+  /* 使用cssmodules时， 不能用images/header.png 要用./这种 */
+}

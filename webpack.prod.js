@@ -24,7 +24,7 @@ module.exports = merge(common, {
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
-    // runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
+    runtimeChunk: 'single', //会把webpack的runtime代码单独打包出来 剩余的也单独打包出来 包括css 变成chunkfile
     // runtimeChunk: {
     //   name: 'runtime1'
     // },
@@ -55,7 +55,13 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader' ]
+        use: [MiniCssExtractPlugin.loader, {
+          loader: 'css-loader',
+          options:{
+            // url: false, //设置不解析css中的url()
+            modules: true
+          }
+        } ]
       }
     ]
   },
