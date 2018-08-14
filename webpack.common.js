@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: {
     index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
     // index1: path.join(__dirname, 'webpackfiles/index.webpack2.js')
-    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
+    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js'),
+
+    'index-babel': path.join(__dirname, 'webpackfiles/babel.index.js')
   },
 
   output: {
@@ -16,16 +16,14 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin([path.join(__dirname, 'build')]),
     new HtmlWebpackPlugin({
-      title: 'htmlplugin',
+      title: 'html',
       // chunks: ['app']
     }),
   ],
 
-  module:{
-    rules: [
-      {
+  module: {
+    rules: [{
         test: /\.(png|jpg|svg|gif)$/,
         use: [{
           loader: 'url-loader',
