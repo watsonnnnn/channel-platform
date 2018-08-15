@@ -6,7 +6,7 @@ module.exports = {
     // index1: path.join(__dirname, 'webpackfiles/index.webpack2.js')
     index1: path.join(__dirname, 'webpackfiles/index.webpack1.js'),
 
-    'index-babel': path.join(__dirname, 'webpackfiles/babel.index.js')
+    'index-babel': ['babel-polyfill',path.join(__dirname, 'webpackfiles/babel.index.js')]
   },
 
   output: {

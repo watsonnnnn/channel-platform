@@ -88,6 +88,7 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: ['babel-loader']
         // https://stackoverflow.com/questions/31781756/is-there-any-practical-difference-between-using-babel-runtime-and-the-babel-poly/31790138#31790138
+        // https://xwenliang.cn/p/5a3a410b9a06a7542c000002
       }
     ]
   },
