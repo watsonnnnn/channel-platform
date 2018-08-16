@@ -91,8 +91,10 @@ module.exports = merge(common, {
         // https://xwenliang.cn/p/5a3a410b9a06a7542c000002
         // env@2.x 中 useBuiltIns: 'usage', 'entry', 'false'  
         // usage:自动按照每个文件中实际需要的导入来指定需要的polyfill 不需要引入babel-polyfill
-        // entry:按照环境targets导入corejs全部的polyfill，通常会比前一个导入的多 ，需要手动import "babel-polyfill"(暂时来说只要写上去就行，实际node_modules中并不需要有这个包)
-        // false:不按文件自动处理或者不处理import "babel-polyfill"
+        // entry:按照环境targets导入corejs全部的polyfill，通常会比前一个导入的多 ，
+        // 针对的是import "babel-polyfill"，所以需要手动import "babel-polyfill"(暂时来说只要写上去就行，实际node_modules中并不需要有这个包)
+        // false:不按文件自动处理 或者 不针对环境处理import "babel-polyfill"
+        // babel-core 的作用把 js 代码分析成 ast ,方便各个插件分析语法进行相应的处理。有些新语法在低版本 js 中是不存在的，如箭头函数，rest 参数，函数默认值等，这种语言层面的不兼容只能通过将代码转为 ast，分析其语法后再转为低版本 js
       }
     ]
   },
