@@ -1,7 +1,3 @@
-import '../node_modules/core-js/modules/es6.string.includes'
-import '../node_modules/core-js/modules/es6.object.assign'
-import '../node_modules/core-js/modules/es6.set'
-
 const a = 123333;
 var s = 1;
 

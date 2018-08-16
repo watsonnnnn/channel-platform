@@ -89,6 +89,10 @@ module.exports = merge(common, {
         use: ['babel-loader']
         // https://stackoverflow.com/questions/31781756/is-there-any-practical-difference-between-using-babel-runtime-and-the-babel-poly/31790138#31790138
         // https://xwenliang.cn/p/5a3a410b9a06a7542c000002
+        // env@2.x 中 useBuiltIns: 'usage', 'entry', 'false'  
+        // usage:自动按照每个文件中实际需要的导入来指定需要的polyfill 不需要引入babel-polyfill
+        // entry:按照环境targets导入corejs全部的polyfill，通常会比前一个导入的多 ，需要手动import "babel-polyfill"(暂时来说只要写上去就行，实际node_modules中并不需要有这个包)
+        // false:不按文件自动处理或者不处理import "babel-polyfill"
       }
     ]
   },
