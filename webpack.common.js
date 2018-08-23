@@ -2,11 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
-    index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
+    // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
     // index1: path.join(__dirname, 'webpackfiles/index.webpack2.js')
-    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js'),
+    // index1: path.join(__dirname, 'webpackfiles/index.webpack1.js'),
 
-    'index-babel': ['babel-polyfill',path.join(__dirname, 'webpackfiles/babel.index.js')]
+    // 'index-babel': ['babel-polyfill',path.join(__dirname, 'webpackfiles/babel.index.js')]
   },
 
   output: {
@@ -18,8 +18,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'html',
-      // chunks: ['app']
+      chunks: ['runtime','index','vendors'] // 要完整的chunk
     }),
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      filename: 'test.html',
+      template: './webpackfiles/templates/template1/template1.html',
+      chunks: ['runtime', 'vendors', 'index1']
+    })
   ],
 
   module: {

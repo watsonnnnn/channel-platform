@@ -8,14 +8,29 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const argv = require('yargs').argv;
+const glob = require('glob');
 
-console.log(argv.env.development) 
+console.log(argv.env.development);
+
+const entries = glob.sync('./webpackfiles/templates/**/*.js'); // multiple html
+const htmlPlugins = []
+for (const path of entries) {
+  const template = path.replace('index.js', 'index.html')
+  const chunkName = path.slice('./src/pages/'.length, -'/index.js'.length)
+  // entry[chunkName] = dev ? [path, template] : path
+  htmlPlugins.push(new HtmlWebpackPlugin({
+    template,
+    filename: chunkName + '.html',
+    chunksSortMode: 'none',
+    chunks: [chunkName]
+  }))
+}
 
 module.exports = merge(common, {
 
   devtool: 'source-map',
   entry: {
-    // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
+    index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
     // index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
   },
 
@@ -54,18 +69,18 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      chunkFilename: "[id].chunk.css"
     }),
 
-    new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, './build/*.dll.js'),
-      includeSourcemap: false // default true. If true, will add filepath + '.map' to the compilation as well.
-    }),
+    // new AddAssetHtmlPlugin({
+    //   filepath: path.resolve(__dirname, './build/*.dll.js'),
+    //   includeSourcemap: false // default true. If true, will add filepath + '.map' to the compilation as well.
+    // }),
 
-    new webpack.DllReferencePlugin({
-      // context: __dirname,
-      manifest: require("./build/bundle.manifest.json"),
-    })
+    // new webpack.DllReferencePlugin({
+    //   // context: __dirname,
+    //   manifest: require("./build/bundle.manifest.json"),
+    // })
   ],
 
   module: {
@@ -74,7 +89,7 @@ module.exports = merge(common, {
         test: /\.css$/,
         // use: ['style-loader', MiniCssExtractPlugin.loader, { // style loader 负责将样式用style标签放到head中 
           //extractplugin负责提取css 二者共存的话，cssloader的modules tru会报错
-        use: [argv.env.development?'style-loader': MiniCssExtractPlugin.loader, {
+        use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
           options:{
             // url: false, //设置不解析css中的url()

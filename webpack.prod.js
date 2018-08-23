@@ -14,8 +14,8 @@ module.exports = merge(common, {
   devtool: 'source-map',
 
   entry: {
-    // index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
-    // index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
+    index: path.join(__dirname, 'webpackfiles/index.webpack.js'),
+    index1: path.join(__dirname, 'webpackfiles/index.webpack1.js')
   },
 
   optimization: {
@@ -49,7 +49,7 @@ module.exports = merge(common, {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'verdors',
+          name: 'vendors',
           chunks: 'all' // 和上面的chunks配置看起来没有区别
         }
       },
@@ -62,21 +62,21 @@ module.exports = merge(common, {
     new WebpackManifestPlugin(),// 资源映射文件 名字使用entry
     new MiniCssExtractPlugin({
       filename: "[name].css",
-      chunkFilename: "[id].css"
+      chunkFilename: "[name].chunk.css"
     }),
 
     new webpack.HashedModuleIdsPlugin(),
     new webpack.NamedModulesPlugin(),
 
-    new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, './build/*.dll.js'),
-      includeSourcemap: false // default true. If true, will add filepath + '.map' to the compilation as well.
-    }),
+    // new AddAssetHtmlPlugin({
+    //   filepath: path.resolve(__dirname, './build/*.dll.js'),
+    //   includeSourcemap: false // default true. If true, will add filepath + '.map' to the compilation as well.
+    // }),
 
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require("./build/bundle.manifest.json"),
-    })
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname,
+    //   manifest: require("./build/bundle.manifest.json"),
+    // })
   ],
 
   module: {

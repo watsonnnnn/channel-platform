@@ -1,8 +1,8 @@
-var _ = require('lodash');
-var styles = require('./indexcss.css');
+var styles = require('./css/indexcss.css');
 var imgI = require('./images/header.png');
 var xmlData = require('./xml/data.xml');
 var requirePack2 = require('./index.webpack2');
+var _ = require('lodash');
 var mathF = require('./math').square;
 // import {square as mathF} from './math';
 

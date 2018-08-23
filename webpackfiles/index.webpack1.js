@@ -2,6 +2,8 @@ var _ = require('lodash');
 
 var webpack3 = require('./index.webpack3');
 
+require('./css/index2.css');
+
 webpack3()
 
 console.log('this is webpack1.js');
