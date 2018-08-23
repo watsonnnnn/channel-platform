@@ -4,6 +4,8 @@
       "targets": {
         "browsers": ["> 0.5%", "last 2 versions"]
       },
-      "useBuiltIns": "usage"
-    }]]
+      "useBuiltIns": "entry"
+    }]],
+  "plugins": [
+  ]
 }
