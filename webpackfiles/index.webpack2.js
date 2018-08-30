@@ -7,7 +7,7 @@ function click(){
 
   require.ensure(['./css/index1.css'], function(){
     console.log('require index1 successfully');
-  });
+  },'indexcsschunk');
 }
 
 module.exports = {

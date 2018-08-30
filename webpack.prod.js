@@ -49,7 +49,7 @@ module.exports = merge(common, {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
+          name: 'vendors', // 使用name就是按这个名字做chunkfile的文件名，不配置的话 按照默认的 从哪些chunk中提取 把这些chunk名字用automaticNameDelimiter连接，默认是'~'
           chunks: 'all' // 和上面的chunks配置看起来没有区别
         }
       },

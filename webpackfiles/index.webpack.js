@@ -1,7 +1,7 @@
 var styles = require('./css/indexcss.css');
 var imgI = require('./images/header.png');
-var xmlData = require('./xml/data.xml');
-var requirePack2 = require('./index.webpack2');
+// var xmlData = require('./xml/data.xml');
+// var requirePack2 = require('./index.webpack2');
 var _ = require('lodash');
 var mathF = require('./math').square;
 // import {square as mathF} from './math';
@@ -24,7 +24,7 @@ function component() {
 
   var button = document.createElement('button');
 
-  button.onclick = requirePack2.click;
+  // button.onclick = requirePack2.click;
 
   button.innerHTML = '点这里';
 
@@ -51,7 +51,7 @@ document.body.appendChild(ele);
 document.body.appendChild(imgc());
 document.body.appendChild(bgDiv());
 
-console.log(xmlData);
+// console.log(xmlData);
 
 console.log(module);
 
