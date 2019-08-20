@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=development --config webpack.prod.js",
     "webpack": "webpack --config webpack.config.js",
+    "builddynamic": "webpack --config webpack.config.dynamic.js",
     "server": "http-server build",
     "dll": "webpack --config webpack.dll.config.js",
     "start": "webpack-dev-server --open --config webpack.dev.js  --qq=123456 --mode=development --env.development"
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
     "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.0.0-rc.1",
     "@babel/preset-env": "^7.0.0-rc.1",
     "@babel/register": "^7.0.0-rc.1",
